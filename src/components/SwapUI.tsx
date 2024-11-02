@@ -38,10 +38,12 @@ const SwapUI: React.FC = () => {
 
 const connectWallet = async () => {
   const wallets = await onboard.connectWallet();
-  connectedWallet(wallets[0]);
+  setConnectedWallet(wallets[0]);
   if (wallets[0]) {
     const ethersProvider = new ethers.BrowserProvider(wallets[0].provider, 'any')
     const signer = ethersProvider.getSigner();
+    console.log('Connected wallet:', wallets[0]);
+    console.log('Signer:', signer);
   }
 };
 
